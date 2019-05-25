@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5455008796787561633
+  m_GuidHigh: 6995894166169725095
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5056882794691896019
+      m_GuidHigh: 3195550042820738179
+    m_SerializedTextureGuid:
+      m_GuidLow: 7205873500092461476
+      m_GuidHigh: 10986655028353791450
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: Arrow
+    m_Texture: {fileID: 2800000, guid: 1d6971a467c56400da75c9da89707898, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4666963507453288385
+      m_GuidHigh: 6573571040190577585
+    m_SerializedTextureGuid:
+      m_GuidLow: 4966993963104149263
+      m_GuidHigh: 9566251252713621914
+    m_Size: {x: 0.065, y: 0.065}
+    m_SpecifySize: 1
+    m_Name: QR Code
+    m_Texture: {fileID: 2800000, guid: 74551f0f4eb144ee9a892186d426c284, type: 3}
