@@ -5,17 +5,45 @@ using UnityEngine.XR.ARFoundation;
 
 public class ARPortalPositioning : MonoBehaviour
 {
+    public GameObject portalPrefab;
     public GameObject arPortal;
     public Vector3 portalDirectction = Vector3.forward;
     public float portalDistance = 2.0F;
 
     private void Update()
     {
-        SetPortal();
+        UpdatePortalPosition();
     }
 
-    void SetPortal()
+    private void Start()
     {
+        CreatePortal();
+    }
+
+    public void StartPortal()
+    {
+        arPortal.GetComponent<EnemySpawner>().Starter();
+    }
+
+    public void DeletePortal()
+    {
+        Destroy(arPortal);
+    }
+
+    public void CreatePortal()
+    {
+        Debug.Log("Create Portal");
+        if (arPortal)
+        {
+            DeletePortal();
+        }
+        arPortal = Instantiate(portalPrefab);
+        UpdatePortalPosition();
+    }
+
+    private void UpdatePortalPosition()
+    {
+        Debug.Log("UpdatePortalPosition");
         if (arPortal == null) return;
         if (Camera.current == null) return;
 

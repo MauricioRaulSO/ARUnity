@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TMPro.TextMeshPro))]
-public class PlayerScore : MonoBehaviour
+public class AnimatedNumberField : MonoBehaviour
 {
     public float initialScale = 1.0F;
     public float effectScaleMultiplicator = 1.3F;
     public float scaleEffectStepPerMicroSecond = 0.2F;
+    public bool onlyPositiveNumbers = true;
+    public string format = "{0:0000000}";
 
     private TMPro.TextMeshPro textMesh;
     private IEnumerator effectScaleCoroutine;
@@ -19,7 +21,7 @@ public class PlayerScore : MonoBehaviour
     private void Start()
     {
         textMesh = GetComponent<TMPro.TextMeshPro>();
-        textMesh.text = "00000000";
+        textMesh.text = String.Format(format, 0);
     }
 
     private void PlayScaleEffect()
@@ -36,7 +38,8 @@ public class PlayerScore : MonoBehaviour
             if (m_score != value)
             {
                 m_score = value;
-                textMesh.text = String.Format("{0:0000000}", m_score);
+                textMesh.text = String.Format(format, m_score);
+                if (onlyPositiveNumbers && m_score <= 0) textMesh.text = "";
                 PlayScaleEffect();
             }
         }    

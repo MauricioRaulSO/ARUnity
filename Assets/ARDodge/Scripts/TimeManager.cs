@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public PlayerScore playerScore;
-    private float m_currentTime;
+    public AnimatedNumberField playerScore;
+    public AnimatedNumberField startCount;
+    public UIConfigMenu configMenu;
 
-    public void Start()
+    public float startCountTime = 5.0F;
+
+    private float m_currentTime;
+    private bool m_isCounting;
+
+    public void StartCounting()
     {
-        m_currentTime = 0.0F;
+        m_isCounting = true;
+        m_currentTime = -startCountTime;
+        playerScore.score = 0;
+    }
+
+    public void StopCounting()
+    {
+        m_isCounting = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!playerScore) return;
+        if (!startCount) return;
+        if (!m_isCounting) return;
 
         m_currentTime += Time.deltaTime;
-        playerScore.score = (int)m_currentTime;
+        startCount.score = -(int)m_currentTime + 1;
+
+        if (m_currentTime >= 0.0F)
+        {
+            playerScore.score = (int)Mathf.Abs(m_currentTime);
+            configMenu.StartGame();
+        }
     }
 }
