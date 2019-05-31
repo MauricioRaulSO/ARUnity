@@ -7,7 +7,7 @@ public class PlayerHighScore : MonoBehaviour
     public int Highest = 0;
     public AnimatedNumberField highScore;
 
-    void setHighScore(int Nscore)
+    public void SetHighScore(int Nscore)
     {
         if (Highest < Nscore)
         {

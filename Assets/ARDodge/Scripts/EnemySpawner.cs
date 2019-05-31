@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         float percentY = (float) Random.Range(-0.5f, 0.5f);
 
         GameObject proy = Instantiate(enemy,  new Vector3(gameObject.transform.position.x + percentX, gameObject.transform.position.y + percentY, 
-            gameObject.transform.position.z), Quaternion.identity);
+            gameObject.transform.position.z), transform.rotation);
         proy.GetComponent<EnemyMovement>().Velocity += timePased * difficulty;
         Destroy(proy, 5);
 

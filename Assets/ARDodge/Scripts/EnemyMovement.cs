@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         Rigidbody me = gameObject.GetComponent<Rigidbody>();
-        me.AddForce(Vector3.back * Velocity);
+        me.AddForce(-transform.forward * Velocity);
         me.AddTorque(new Vector3(Random.value, Random.value, Random.value));
     }
 

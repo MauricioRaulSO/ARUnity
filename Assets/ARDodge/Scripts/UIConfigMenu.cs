@@ -6,8 +6,8 @@ public class UIConfigMenu : MonoBehaviour
 {
     public TimeManager timeManager;
     public ARPortalPositioning portalPositioning;
-		public ARPlaceInGroundAt delimiterPositioning;
-		public GameObject startMenu;
+    public ARPlaceInGroundAt delimiterPositioning;
+    public GameObject startMenu;
     public GameObject configButton;
 
     private bool isStarted;
@@ -41,7 +41,7 @@ public class UIConfigMenu : MonoBehaviour
         startMenu.SetActive(true);
         configButton.SetActive(false);
         gameObject.SetActive(false);
-				delimiterPositioning.isUpdating = false;
+        delimiterPositioning.isUpdating = true;
         isStarted = false;
     }
 
@@ -51,7 +51,7 @@ public class UIConfigMenu : MonoBehaviour
         portalPositioning.StartPortal();
         startMenu.SetActive(false);
         configButton.SetActive(true);
-				delimiterPositioning.isUpdating = false;
+        delimiterPositioning.isUpdating = false;
         isStarted = true;
         gameObject.SetActive(false);
     }

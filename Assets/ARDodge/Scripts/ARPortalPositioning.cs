@@ -32,7 +32,6 @@ public class ARPortalPositioning : MonoBehaviour
 
     public void CreatePortal()
     {
-        Debug.Log("Create Portal");
         if (arPortal)
         {
             DeletePortal();
@@ -43,9 +42,12 @@ public class ARPortalPositioning : MonoBehaviour
 
     private void UpdatePortalPosition()
     {
-        Debug.Log("UpdatePortalPosition");
         if (arPortal == null) return;
         if (Camera.current == null) return;
+
+
+        portalDirectction.x = Mathf.PerlinNoise(Time.timeSinceLevelLoad / 50.0F, Time.timeSinceLevelLoad / 50.0F) - 0.5F;
+        portalDirectction.y = Mathf.PerlinNoise(Time.timeSinceLevelLoad / 50.0F + 1000.0F, Time.timeSinceLevelLoad / 50.0F + 1000.0F) - 0.5F;
 
         arPortal.transform.position = Camera.current.transform.position;
         arPortal.transform.position += portalDirectction.normalized * portalDistance;
