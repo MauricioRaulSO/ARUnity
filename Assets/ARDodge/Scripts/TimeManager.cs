@@ -7,6 +7,10 @@ public class TimeManager : MonoBehaviour
     public PlayerHighScore playerHighScore;
     public AnimatedNumberField playerScore;
     public AnimatedNumberField startCount;
+		public AudioSource audioSource;
+		public AudioClip tickingSound;
+		public AudioClip countingSound;
+		public AudioClip dodgeSound;
     public UIConfigMenu configMenu;
 
     public float startCountTime = 5.0F;
@@ -14,8 +18,21 @@ public class TimeManager : MonoBehaviour
     private float m_currentTime;
     private bool m_isCounting;
 
+    public void PauseGame()
+    {
+				audioSource.PlayOneShot(tickingSound);
+        Time.timeScale = 0.0F;
+    }
+
+    public void ResumeGame()
+    {
+				audioSource.Stop();
+        Time.timeScale = 1.0F;
+    }
+
     public void StartCounting()
     {
+				audioSource.PlayOneShot(countingSound);
         m_isCounting = true;
         m_currentTime = -startCountTime;
         playerScore.score = 0;
@@ -41,7 +58,10 @@ public class TimeManager : MonoBehaviour
         if (m_currentTime >= 0.0F)
         {
             playerScore.score = (int)Mathf.Abs(m_currentTime * 10);
-            configMenu.StartGame();
-        }
+						if (!configMenu.IsRunning())
+								audioSource.PlayOneShot(dodgeSound);
+        		
+						configMenu.StartGame();
+       	}
     }
 }

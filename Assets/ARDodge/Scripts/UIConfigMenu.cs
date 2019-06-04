@@ -12,23 +12,18 @@ public class UIConfigMenu : MonoBehaviour
 
     private bool isStarted;
 
-    public void PauseGame()
-    {
-        Time.timeScale = 0.0F;
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1.0F;
-    }
+		public bool IsRunning() 
+		{
+				return isStarted;
+		}
 
     public void SwitchMenu()
     {
         if (!gameObject.activeSelf)
         {
-            PauseGame();
+            timeManager.PauseGame();
         } else {
-            ResumeGame();
+						timeManager.ResumeGame();
         }
         gameObject.SetActive(!gameObject.activeSelf);
     }
@@ -37,7 +32,7 @@ public class UIConfigMenu : MonoBehaviour
     {
         timeManager.StopCounting();
         portalPositioning.CreatePortal();
-        ResumeGame();
+        timeManager.ResumeGame();
         startMenu.SetActive(true);
         configButton.SetActive(false);
         gameObject.SetActive(false);
